@@ -9,10 +9,12 @@ import sys
 import os
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
+from numpy import array
 from tensorflow.keras.models import load_model
+from PIL import Image
 
-"""# c:disable tensorflow compilation warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL']='2'"""
+# c:disable tensorflow compilation warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 # m:initialize the webcam
 cap = cv2.VideoCapture(0)
@@ -29,20 +31,29 @@ with tf.io.gfile.GFile("image-classification-tensorflow/logs/trained_graph.pb", 
 
 while True:
     # m:read each frame from the webcam
-    _, frame = cap.read()
+    ret, frame = cap.read()
 
     x, y, c = frame.shape
     
     # m:flip the frame vertically
     frame = cv2.flip(frame, 1)
     framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    #framesh = ''.join(str(e) for e in framergb)
+
+    if ret == False:
+        break
+    cv2.imwrite('frames.jpg',framergb)
+
+    img = tf.io.gfile.GFile("frames.jpg", 'rb').read()
+    
+
     
     with tf.compat.v1.Session() as sess:
-        # c:feed the image_data as input to the graph and get first prediction
+        # c:feed the image_data
         softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
 
         predictions = sess.run(softmax_tensor, \
-                {'DecodeJpeg/contents:0': framergb})
+                {'DecodeJpeg/contents:0': img})
     
     # m:print(prediction)
     classID = np.argmax(predictions)
@@ -64,4 +75,3 @@ while True:
 cap.release()
 
 cv2.destroyAllWindows()
-
