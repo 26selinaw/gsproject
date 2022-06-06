@@ -1,7 +1,4 @@
 # recognizer/Users/26selinaw/Desktop/run.py
-
-# import packages
-
 import cv2
 import numpy as np
 import mediapipe as mp
@@ -22,7 +19,7 @@ cap = cv2.VideoCapture(0)
 # c:loads label file, strips off carriage return
 label_lines = [line.rstrip() for line
                    in tf.io.gfile.GFile("image-classification-tensorflow/logs/trained_labels.txt")]
-                   
+
 # c:unpersists graph from file; load model
 with tf.io.gfile.GFile("image-classification-tensorflow/logs/trained_graph.pb", 'rb') as f:
     graph_def = tf.compat.v1.GraphDef()
@@ -34,7 +31,7 @@ while True:
     ret, frame = cap.read()
 
     x, y, c = frame.shape
-    
+
     # m:flip the frame vertically
     frame = cv2.flip(frame, 1)
     framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -46,19 +43,17 @@ while True:
 
     img = tf.io.gfile.GFile("frames.jpg", 'rb').read()
     
-
-    
     with tf.compat.v1.Session() as sess:
         # c:feed the image_data
         softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
 
         predictions = sess.run(softmax_tensor, \
                 {'DecodeJpeg/contents:0': img})
-    
+                
     # m:print(prediction)
     classID = np.argmax(predictions)
     className = label_lines[classID]
-    
+
     # m:show the prediction on the frame
     cv2.putText(frame, className, (550, 320), cv2.FONT_HERSHEY_SIMPLEX,
                    1, (230,230,250), 2, cv2.LINE_AA)
@@ -68,7 +63,7 @@ while True:
 
     if cv2.waitKey(1) == ord('q'):
         break
-        
+
     print("finish frame")
 
 # m: release the webcam and destroy all active windows
