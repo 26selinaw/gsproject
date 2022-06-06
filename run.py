@@ -4,6 +4,7 @@ import numpy as np
 import mediapipe as mp
 import sys
 import os
+import io
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
 from numpy import array
@@ -37,18 +38,17 @@ while True:
     framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     #framesh = ''.join(str(e) for e in framergb)
 
-    if ret == False:
-        break
-    cv2.imwrite('frames.jpg',framergb)
-
-    img = tf.io.gfile.GFile("frames.jpg", 'rb').read()
+    im = Image.fromarray(framergb)
+    with io.BytesIO() as output:
+        im.save(output, format="PNG")
+        frames = output.getvalue()
     
     with tf.compat.v1.Session() as sess:
         # c:feed the image_data
         softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
 
         predictions = sess.run(softmax_tensor, \
-                {'DecodeJpeg/contents:0': img})
+                {'DecodeJpeg/contents:0': frames})
                 
     # m:print(prediction)
     classID = np.argmax(predictions)
