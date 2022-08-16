@@ -1,6 +1,6 @@
 # gsproject
 
-#how to run:
+how to run:
 
 ```shell
 git clone https://github.com/26selinaw/gsproject
