@@ -1,14 +1,16 @@
 # gsproject
 
+#how to run:
+
+```shell
 git clone https://github.com/26selinaw/gsproject
-
-cd gsproject
-
-how to run:
+```
 
 ```shell
 cd gsproject
 ```
-spaces nowrap
 
-soft wrap space
+```shell
+python3 run.py
+```
+
