@@ -14,7 +14,9 @@ In order for machines to recognize images, we model the human brain using neural
 
 For this program, I referenced:
 training and classifying- https://github.com/xuetsing/image-classification-tensorflow
+
 hand detection and screen display - https://techvidvan.com/tutorials/hand-gesture-recognition-tensorflow-opencv/
+
 dataset- https://www.kaggle.com/datasets/grassknoted/asl-alphabet?resource=download
 
 how to run:
