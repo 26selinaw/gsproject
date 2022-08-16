@@ -5,7 +5,8 @@ This real-time program is designed to detect your hand gestures (American Sign L
 # Introduction
 Gesture recognition has long been an extensively researched field in the Computer Vision community. In real time, hand segmentation can be a challenging problem. Humans can easily be taught to differentiate between different objects and textures, however for machines, images are essentially just 3-dimensional arrays.
 
-# Problem Motivation
+Problem Motivation
+
 Sign language translation is an important factor that will help bridge the communication gap between deaf and hearing people. Especially through the pandemic and working fully remotely, some have had more difficulty adapting than others. On video meeting apps, such as zoom and google meeting, those with hearing imparities might have struggled communicating with others on video. This program allows easier communication while working remotely. The program can also be used to teach potential signers. The user can match each hand gesture to the letter and learn quickly using the program. 
 
 # Overview
@@ -16,7 +17,7 @@ training and classifying- https://github.com/xuetsing/image-classification-tenso
 hand detection and screen display - https://techvidvan.com/tutorials/hand-gesture-recognition-tensorflow-opencv/
 dataset- https://www.kaggle.com/datasets/grassknoted/asl-alphabet?resource=download
 
-# how to run:
+how to run:
 
 ```shell
 git clone https://github.com/26selinaw/gsproject
