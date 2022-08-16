@@ -6,8 +6,9 @@ cd gsproject
 
 how to run:
 
-hello tabs
-
+```shell
+cd gsproject
+```
 spaces nowrap
 
 soft wrap space
