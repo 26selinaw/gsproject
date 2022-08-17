@@ -1,6 +1,6 @@
 # gsproject
 
-This real-time program is designed to detect your hand gestures (American Sign Language) and display its English translation on-screen.
+I have always wanted to experiment with AI and gesture recognition. I had some experience with python before, however, the development of this program took quite some time. Though the process was challenging, I was able to finish a completed program and I hope to further improve the speed and accuracy. This article describes the code in detail and explains the ups and downs as this program was created. The finished real-time program is designed to detect your hand gestures (American Sign Language) and display its English translation on-screen.
 
 # Introduction
 Gesture recognition has long been an extensively researched field in the Computer Vision community. In real time, hand segmentation can be a challenging problem. Humans can easily be taught to differentiate between different objects and textures, however for machines, images are essentially just 3-dimensional arrays.
