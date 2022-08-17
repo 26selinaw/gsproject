@@ -21,14 +21,18 @@ dataset- https://www.kaggle.com/datasets/grassknoted/asl-alphabet?resource=downl
 
 how to run:
 
+clone the repo
 ```shell
 git clone https://github.com/26selinaw/gsproject
 ```
 
+enter project directory
+folder contains training/classifying folder(image-classification-tensorflow) and main program
 ```shell
 cd gsproject
 ```
 
+run the main python program(run.py)
 ```shell
 python3 run.py
 ```
